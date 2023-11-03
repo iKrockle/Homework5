@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         int clientOS = 1;
-        int year=2014;
+        int year=1800;
         int deliveryDistance = 105;
         int monthNumber = 13;
         task(clientOS);
@@ -12,12 +12,13 @@ public class Main {
     }
 
     public static void task(int clientOS){
-        String version = switch (clientOS) {
-            case 0 -> "iOS";
-            case 1 -> "Android";
-            default -> null;
-        };
-        if (version != null) System.out.println("Установите версию приложения для "+version+" по ссылке");
+        String version;
+
+        if(clientOS == 0)version = "iOS";
+        else if (clientOS == 1) version ="Android";
+        else return;
+
+        System.out.println("Установите версию приложения для "+version+" по ссылке");
     }
 
     public static void task(int clientOS,int year){
@@ -25,17 +26,19 @@ public class Main {
         if (year<=2015)
             strOut+=" облегченную";
 
-        String version = switch (clientOS) {
-            case 0 -> "iOS";
-            case 1 -> "Android";
-            default -> null;
-        };
-        if (version != null) System.out.println(strOut+" версию приложения для "+version+" по ссылке");
+        String version;
+
+        if(clientOS == 0)version = "iOS";
+        else if (clientOS == 1) version ="Android";
+        else return;
+
+        System.out.println(strOut+" версию приложения для "+version+" по ссылке");
     }
 
     public static void task3(int year){
         int startYear = 1584;
-        if ((year-startYear)%4==0)
+
+        if (year%400 == 0||(year%100 != 0&&(year-startYear)%4==0))
             System.out.println(year+"г - високосный");
         else if (year<startYear)
             System.out.println("Високосный год еще не ввели");
